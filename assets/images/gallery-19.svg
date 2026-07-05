@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+<rect width="800" height="600" fill="d4cdbf"/>
+<circle cx="400" cy="300" r="90" fill="#9cae8b" opacity="0.25"/>
+<text x="400" y="318" text-anchor="middle" font-family="serif" font-size="40" fill="#9cae8b" opacity="0.55" letter-spacing="4">Gallery 19</text>
+</svg>

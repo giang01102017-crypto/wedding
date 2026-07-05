@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Primary SEO -->
+  <title>Liên & Trường Giang — Lễ Thành Hôn 08.08.2026</title>
+  <meta name="description" content="Thiệp mời đám cưới của Nguyễn Thị Liên và Trường Giang. Lễ thành hôn diễn ra vào ngày 08 tháng 08 năm 2026. Trân trọng kính mời quý khách tham dự chung vui." />
+  <meta name="keywords" content="thiệp cưới, đám cưới, Nguyễn Liên, Trường Giang, 08/08/2026, wedding invitation, Liên Giang, thành hôn" />
+  <meta name="author" content="Liên & Trường Giang" />
+  <meta name="theme-color" content="#f4f1ec" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lien-giang.wedding/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:site_name" content="Liên & Trường Giang" />
+  <meta property="og:title" content="Liên & Trường Giang — 08.08.2026" />
+  <meta property="og:description" content="Trân trọng kính mời quý khách tham dự lễ thành hôn của Nguyễn Thị Liên và Trường Giang vào ngày 08 tháng 08 năm 2026." />
+  <meta property="og:image" content="assets/icons/og-image.svg" />
+  <meta property="og:url" content="https://lien-giang.wedding/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Liên & Trường Giang — 08.08.2026" />
+  <meta name="twitter:description" content="Trân trọng kính mời quý khách tham dự lễ thành hôn của Nguyễn Thị Liên và Trường Giang vào ngày 08 tháng 08 năm 2026." />
+  <meta name="twitter:image" content="assets/icons/og-image.svg" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Lễ Thành Hôn — Liên & Trường Giang",
+    "startDate": "2026-08-08T18:00:00+07:00",
+    "endDate": "2026-08-08T21:00:00+07:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "description": "Lễ thành hôn của Nguyễn Thị Liên và Trường Giang.",
+    "image": ["assets/icons/og-image.svg"],
+    "location": {
+      "@type": "Place",
+      "name": "Trung tâm Hội nghị & Tiệc cưới",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Đường Lê Lợi",
+        "addressLocality": "Hà Nội",
+        "addressCountry": "VN"
+      }
+    },
+    "organizer": { "@type": "Person", "name": "Liên & Trường Giang" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__mon" aria-hidden="true"></div>
+      <div class="loader__names">Liên <span>&amp;</span> Giang</div>
+      <div class="loader__date">08 · 08 · 2026</div>
+      <div class="loader__bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- Flower petals layer -->
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <!-- Envelope gate: shown until opened -->
+  <div class="envelope-gate" id="envelopeGate" aria-hidden="false">
+    <div class="envelope-gate__hint">Chạm để mở thiệp</div>
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Mở thiệp mời">
+      <div class="envelope__back"></div>
+      <div class="envelope__letter" id="envelopeLetter">
+        <div class="envelope__letter-inner">
+          <div class="envelope__letter-kana">結婚式</div>
+          <div class="envelope__letter-eyebrow">Trân trọng kính mời</div>
+          <div class="envelope__letter-names">Liên &amp; Giang</div>
+          <div class="envelope__letter-date">08 tháng 08, 2026</div>
+          <div class="envelope__letter-note">Hân hạnh được đón tiếp quý khách</div>
+        </div>
+      </div>
+      <div class="envelope__front">
+        <div class="envelope__seal">
+          <span>L</span><span class="envelope__seal-amp">&amp;</span><span>G</span>
+        </div>
+      </div>
+      <div class="envelope__flap" id="envelopeFlap"></div>
+    </div>
+  </div>
+
+  <!-- Music toggle -->
+  <button class="music-toggle" id="musicToggle" aria-label="Bật tắt nhạc nền" title="Nhạc nền">
+    <span class="music-toggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <!-- Progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <main id="content" class="content" aria-hidden="true">
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <nav class="nav" id="nav" aria-label="Điều hướng">
+        <a class="nav__brand" href="#hero">L<span>&amp;</span>G</a>
+        <ul class="nav__links">
+          <li><a href="#story">Câu chuyện</a></li>
+          <li><a href="#gallery">Khoảnh khắc</a></li>
+          <li><a href="#schedule">Tiến trình</a></li>
+          <li><a href="#family">Gia đình</a></li>
+          <li><a href="#rsvp">Xác nhận</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero__inner">
+        <div class="hero__kana">結婚式</div>
+        <div class="hero__eyebrow">Trân trọng kính mời</div>
+        <h1 class="hero__title">
+          <span class="hero__name">Nguyễn Thị Liên</span>
+          <span class="hero__amp">&amp;</span>
+          <span class="hero__name">Trường Giang</span>
+        </h1>
+        <div class="hero__date">08 · 08 · 2026</div>
+        <div class="hero__place">Trung tâm Hội nghị &amp; Tiệc cưới — Hà Nội</div>
+        <a class="hero__cta" href="#rsvp">Xác nhận tham dự</a>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span></span>
+        <small>Cuộn xuống</small>
+      </div>
+    </header>
+
+    <!-- Countdown -->
+    <section class="countdown reveal" id="countdown" aria-label="Đếm ngược">
+      <div class="section-head">
+        <div class="section-head__kana">まで</div>
+        <h2 class="section-head__title">Đếm ngược ngày chung đôi</h2>
+        <p class="section-head__sub">Mỗi giây trôi qua là một bước gần hơn đến ngày chúng tôi chính thức thuộc về nhau.</p>
+      </div>
+      <div class="countdown__grid" id="countdownGrid">
+        <div class="countdown__unit"><span class="countdown__num" data-unit="days">00</span><span class="countdown__label">Ngày</span></div>
+        <div class="countdown__sep" aria-hidden="true">:</div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="hours">00</span><span class="countdown__label">Giờ</span></div>
+        <div class="countdown__sep" aria-hidden="true">:</div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="minutes">00</span><span class="countdown__label">Phút</span></div>
+        <div class="countdown__sep" aria-hidden="true">:</div>
+        <div class="countdown__unit"><span class="countdown__num" data-unit="seconds">00</span><span class="countdown__label">Giây</span></div>
+      </div>
+    </section>
+
+    <!-- Love Story Timeline -->
+    <section class="story reveal" id="story" aria-label="Câu chuyện tình yêu">
+      <div class="section-head">
+        <div class="section-head__kana">物語</div>
+        <h2 class="section-head__title">Câu chuyện của chúng tôi</h2>
+        <p class="section-head__sub">Tình yêu không đến từ một khoảnh khắc, mà được đan kết qua từng mùa.</p>
+      </div>
+      <ol class="timeline">
+        <li class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__date">Mùa thu 2021</div>
+            <h3>Lần đầu gặp gỡ</h3>
+            <p>Một chiều thu Hà Nội, hai người lạ bước vào cùng một quán cà phê nhỏ ở phố cổ. Một cuốn sách rơi, một ánh mắt chạm — và câu chuyện bắt đầu.</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__date">Đông 2022</div>
+            <h3>Chuyến du lịch đầu tiên</h3>
+            <p>Cùng nhau ngắm tuyết đầu mùa tại Sa Pa. Lần đầu Giang nắm tay Liên giữa trời đông, và từ đó không còn muốn buông ra.</p>
+          </li>
+        <li class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__date">Xuân 2024</div>
+            <h3>Nơi gọi là nhà</h3>
+            <p>Chúng tôi dọn về căn hộ nhỏ đầu tiên, trồng một chậu hoa lavender trên ban công, và học cách xây tổ ấm mỗi buổi sáng.</p>
+          </li>
+        <li class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__date">Mùa hè 2025</div>
+            <h3>Câu hỏi quan trọng</h3>
+            <p>Giữa hoàng hôn đổ xuống vịnh Hạ Long, Giang quỳ xuống và hỏi điều mà cả hai đã biết từ lâu. Liên khóc rồi gật đầu.</p>
+          </li>
+        <li class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__date">08 · 08 · 2026</div>
+            <h3>Ngày thuộc về nhau</h3>
+            <p>Và hôm nay, trước gia đình và bạn bè, chúng tôi chính thức viết nên chương mới — cùng nhau, trọn đời.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery reveal" id="gallery" aria-label="Thư viện ảnh">
+      <div class="section-head">
+        <div class="section-head__kana">思い出</div>
+        <h2 class="section-head__title">Khoảnh khắc khắc dấu</h2>
+        <p class="section-head__sub">Mỗi bức ảnh là một chương trong cuốn sách mà chúng tôi viết cùng nhau.</p>
+      </div>
+      <div class="gallery__grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="schedule reveal" id="schedule" aria-label="Tiến trình buổi tiệc">
+      <div class="section-head">
+        <div class="section-head__kana">進行</div>
+        <h2 class="section-head__title">Tiến trình ngày trọng đại</h2>
+        <p class="section-head__sub">Kính mời quý khách cùng chung vui theo hành trình dưới đây.</p>
+      </div>
+      <div class="schedule__list">
+        <div class="schedule__item">
+          <div class="schedule__time">17:00</div>
+          <div class="schedule__body">
+            <h3>Đón khách</h3>
+            <p>Quý khách đăng nhập sổ vàng, nhận hoa và được dẫn vào sảnh tiệc.</p>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__time">17:30</div>
+          <div class="schedule__body">
+            <h3>Trưng bày &amp; chụp hình</h3>
+            <p>Khu vực ảnh cưới mở cửa, quý khách tự do tham quan và chụp hình lưu niệm.</p>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__time">18:00</div>
+          <div class="schedule__body">
+            <h3>Lễ Thành Hôn</h3>
+            <p>Nhàn tể bái gia tiên, nghi thức trao nhẫn và lời hứa trọn đời trước sự chứng kiến của hai họ.</p>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__time">19:00</div>
+          <div class="schedule__body">
+            <h3>Tiệc chung vui</h3>
+            <p>Khai tiệc, phát biểu của gia đình và khách mời, bắt đầu bữa tối thân mật.</p>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__time">20:30</div>
+          <div class="schedule__body">
+            <h3>Văn nghệ &amp; cắt bánh</h3>
+            <p>Màn biểu diễn bất ngờ, cắt bánh cưới và nâng ly chúc phúc cho tân lang tân nương.</p>
+          </div>
+        </div>
+        <div class="schedule__item">
+          <div class="schedule__time">21:00</div>
+          <div class="schedule__body">
+            <h3>Tiết mục kết &amp; đưa khách</h3>
+            <p>Hôn phu hôn thê tạm biệt quý khách, cảm ơn sự hiện diện quý báu của mọi người.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Family -->
+    <section class="family reveal" id="family" aria-label="Gia đình hai bên">
+      <div class="section-head">
+        <div class="section-head__kana">家族</div>
+        <h2 class="section-head__title">Gia đình hai bên</h2>
+        <p class="section-head__sub">Nhớ ơn sinh thành của đấng sinh thành, chúng tôi trân trọng giới thiệu cùng quý khách.</p>
+      </div>
+      <div class="family__grid">
+        <article class="family__card family__card--bride">
+          <div class="family__tag">Nhà gái</div>
+          <h3 class="family__who">Gia đình cô dâu</h3>
+          <div class="family__figure"><img src="assets/images/bride.svg" alt="Chân dung cô dâu Nguyễn Thị Liên" loading="lazy" width="600" height="800" /></div>
+          <ul class="family__list">
+            <li><span>Cha</span><strong>Ông Nguyễn Văn Hùng</strong></li>
+            <li><span>Mẹ</span><strong>Bà Trần Thị Mai</strong></li>
+            <li><span>Em gái</span><strong>Nguyễn Thị Lan Anh</strong></li>
+          </ul>
+          <p class="family__intro">Liên là con cả trong gia đình, lớn lên tại Hà Nội, hiện là giảng viên văn học Việt Nam. Cô yêu hoa cúc trắng, trà sen và những buổi chiều đọc sách.</p>
+        </article>
+        <article class="family__card family__card--groom">
+          <div class="family__tag">Nhà trai</div>
+          <h3 class="family__who">Gia đình chú rể</h3>
+          <div class="family__figure"><img src="assets/images/groom.svg" alt="Chân dung chú rể Trường Giang" loading="lazy" width="600" height="800" /></div>
+          <ul class="family__list">
+            <li><span>Cha</span><strong>Ông Trần Văn Đạt</strong></li>
+            <li><span>Mẹ</span><strong>Bà Lê Thị Hồng</strong></li>
+            <li><span>Em trai</span><strong>Trường Sơn</strong></li>
+          </ul>
+          <p class="family__intro">Giang là con trai trưởng, kỹ sư phần mềm, thích nhiếp ảnh đường phố và pha cà phê mỗi sáng. Anh ấy gặp Liên đúng vào ngày anh quyết định tin vào duyên phận.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section class="venue reveal" id="venue" aria-label="Bản đồ địa điểm">
+      <div class="section-head">
+        <div class="section-head__kana">場所</div>
+        <h2 class="section-head__title">Địa điểm tổ chức</h2>
+        <p class="section-head__sub">Trung tâm Hội nghị &amp; Tiệc cưới, 123 Lê Lợi, Hà Nội.</p>
+      </div>
+      <div class="venue__map">
+        <iframe
+          title="Bản đồ địa điểm tổ chức đám cưới"
+          src="https://www.google.com/maps?q=123+L%C3%AA+L%E1%BB%A3i+H%C3%A0+N%E1%BB%99i&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+        <div class="venue__details">
+          <h3>Trung tâm Hội nghị &amp; Tiệc cưới</h3>
+          <p>123 Đường Lê Lợi, Quận Hoàn Kiếm, Hà Nội</p>
+          <a class="venue__btn" href="https://www.google.com/maps?q=123+L%C3%AA+L%E1%BB%A3i+H%C3%A0+N%E1%BB%99i" target="_blank" rel="noopener">Mở trong Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QR Gift -->
+    <section class="gift reveal" id="gift" aria-label="Mừng cưới">
+      <div class="gift__card">
+        <div class="gift__text">
+          <div class="section-head__kana gift__kana">贈り物</div>
+          <h2 class="gift__title">Mừng cưới</h2>
+          <p class="gift__sub">Sự hiện diện của quý khách là món quà quý giá nhất. Nếu quý vị muốn thêm lời chúc thiết thực, chúng tôi trân trọng đón nhận qua các kênh dưới đây.</p>
+          <ul class="gift__methods">
+            <li><span> VietQR / Ngân hàng bất kỳ</span></li>
+            <li><span> Momo</span></li>
+            <li><span> Chuyển khoản ngân hàng</span></li>
+          </ul>
+          <p class="gift__note">Cảm ơn quý khách từ tận đáy lòng.</p>
+        </div>
+        <div class="gift__qr">
+          <div class="gift__qr-frame" id="giftQr" aria-label="Mã QR mừng cưới"></div>
+          <div class="gift__qr-caption">Quét để mừng cưới</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp reveal" id="rsvp" aria-label="Xác nhận tham dự">
+      <div class="section-head">
+        <div class="section-head__kana">返信</div>
+        <h2 class="section-head__title">Xác nhận tham dự</h2>
+        <p class="section-head__sub">Vui lòng cho chúng tôi biết quý khách sẽ cùng chung vui hay không trước ngày 01.08.2026.</p>
+      </div>
+      <form class="rsvp__form" id="rsvpForm" novalidate>
+        <div class="rsvp__row">
+          <label class="field">
+            <span class="field__label">Họ &amp; tên <em>*</em></span>
+            <input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Nguyễn Văn A" />
+            <small class="field__error" data-for="name"></small>
+          </label>
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input type="email" name="email" maxlength="160" autocomplete="email" placeholder="email@example.com" />
+            <small class="field__error" data-for="email"></small>
+          </label>
+        </div>
+        <div class="rsvp__row">
+          <label class="field">
+            <span class="field__label">Số điện thoại</span>
+            <input type="tel" name="phone" maxlength="20" autocomplete="tel" placeholder="+84 ..." />
+          </label>
+          <label class="field">
+            <span class="field__label">Số khách đi cùng</span>
+            <input type="number" name="guests" min="0" max="10" value="1" />
+          </label>
+        </div>
+        <div class="rsvp__row rsvp__row--attend">
+          <span class="field__label">Quý khách sẽ <em>*</em></span>
+          <div class="rsvp__choices">
+            <label class="choice"><input type="radio" name="attending" value="yes" required checked /><span>Hướng tới tham dự</span></label>
+            <label class="choice"><input type="radio" name="attending" value="maybe" /><span>Chưa chắc chắn</span></label>
+            <label class="choice"><input type="radio" name="attending" value="no" /><span>Không thể tham dự</span></label>
+          </div>
+        </div>
+        <label class="field">
+          <span class="field__label">Lựa chọn thực đơn</span>
+          <select name="meal">
+            <option value="">— Không yêu cầu riêng —</option>
+            <option value="traditional">Món Việt truyền thống</option>
+            <option value="vegetarian">Thuần chay</option>
+            <option value="seafood">Hải sản</option>
+            <option value="halal">Halal</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">Lời chúc gửi đôi tân lang tân nương</span>
+          <textarea name="message" rows="3" maxlength="500" placeholder="Chúc hai con trăm năm hạnh phúc..."></textarea>
+        </label>
+        <button class="rsvp__submit" type="submit" id="rsvpSubmit">Gửi xác nhận</button>
+        <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Thank You -->
+    <footer class="thanks reveal" id="thanks" aria-label="Lời cảm ơn">
+      <div class="thanks__kana">感謝</div>
+      <h2 class="thanks__title">Trân trọng cảm ơn</h2>
+      <p class="thanks__body">Sự hiện diện và lời chúc của quý khách là hành trang quý giá nhất cho chặng đường phía trước của chúng tôi. Hẹn gặp lại quý khách vào ngày 08 tháng 08 năm 2026.</p>
+      <div class="thanks__sign">— Liên &amp; Giang —</div>
+      <div class="thanks__date">08 · 08 · 2026</div>
+    </footer>
+
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
