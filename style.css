@@ -692,3 +692,149 @@ section { padding: clamp(80px, 12vh, 140px) var(--gutter); }
   .reveal { opacity: 1; transform: none; }
   .petals { display: none; }
 }
+/* ================= HERO V2 ================= */
+
+.hero-v2{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:#000;
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1.05);
+    filter:brightness(.55);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.55)
+    );
+}
+
+.hero-nav{
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1200px,90%);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:5;
+}
+
+.logo{
+    color:#fff;
+    font-size:34px;
+    font-family:"Cormorant Garamond",serif;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:#d6b36a;
+}
+
+.hero-nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.hero-nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.hero-nav a:hover{
+    color:#d6b36a;
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    color:#fff;
+}
+
+.hero-small{
+    text-transform:uppercase;
+    letter-spacing:5px;
+    margin-bottom:18px;
+    opacity:.9;
+}
+
+.hero-content h1{
+    font-size:78px;
+    font-family:"Cormorant Garamond",serif;
+    font-weight:400;
+    line-height:1.15;
+}
+
+.hero-content h1 span{
+    display:block;
+    font-size:42px;
+    color:#d6b36a;
+    margin:10px 0;
+}
+
+.hero-line{
+    width:90px;
+    height:2px;
+    background:#d6b36a;
+    margin:35px auto;
+}
+
+.hero-date,
+.hero-place{
+    font-size:20px;
+    letter-spacing:2px;
+    margin:10px 0;
+}
+
+.hero-button{
+    display:inline-block;
+    margin-top:40px;
+    padding:16px 42px;
+    border:1px solid #fff;
+    color:#fff;
+    text-decoration:none;
+    transition:.35s;
+}
+
+.hero-button:hover{
+    background:#fff;
+    color:#111;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:48px;
+}
+
+.hero-nav ul{
+    display:none;
+}
+
+.hero-date,
+.hero-place{
+    font-size:16px;
+}
+
+}
