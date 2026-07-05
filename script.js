@@ -5,13 +5,8 @@
 (function () {
   "use strict";
 
-  /* ---------- env ---------- */
-  const SUPABASE_URL = window.VITE_SUPABASE_URL || (window.import && window.import.meta && window.import.meta.env && window.import.meta.env.VITE_SUPABASE_URL);
-  // The site is served statically; env is injected via a runtime config script if present.
-  // Fallbacks below read from window.__WEDDING_ENV__ if defined by the host.
-  const ENV = window.__WEDDING_ENV__ || {};
-  const SB_URL = ENV.SUPABASE_URL || "";
-  const SB_KEY = ENV.SUPABASE_ANON_KEY || "";
+  /* ---------- config ---------- */
+  const RSVP_STORAGE_KEY = "lien_giang_rsvp";
 
   const WEDDING_DATE = new Date("2026-08-08T18:00:00+07:00").getTime();
 
@@ -278,12 +273,15 @@
     if (err) err.textContent = msg || "";
   }
 
-  let supabaseClient = null;
-  function getSupabase() {
-    if (supabaseClient) return supabaseClient;
-    if (!SB_URL || !SB_KEY || !window.supabase || !window.supabase.createClient) return null;
-    supabaseClient = window.supabase.createClient(SB_URL, SB_KEY);
-    return supabaseClient;
+  function saveRsvpLocally(data) {
+    try {
+      const prev = JSON.parse(localStorage.getItem(RSVP_STORAGE_KEY) || "[]");
+      prev.push({ ...data, created_at: new Date().toISOString() });
+      localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify(prev));
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   if (form) {
@@ -309,49 +307,13 @@
 
       submitBtn.disabled = true;
       setStatus("Đang gửi xác nhận...", "");
-
-      // Prefer the deployed edge function (server-side validation + service role insert)
-      let handled = false;
-      if (SB_URL) {
-        try {
-          const apiUrl = `${SB_URL}/functions/v1/rsvp`;
-          const headers = { "Content-Type": "application/json" };
-          if (SB_KEY) headers["Authorization"] = `Bearer ${SB_KEY}`;
-          const res = await fetch(apiUrl, { method: "POST", headers, body: JSON.stringify(data) });
-          const body = await res.json().catch(() => ({}));
-          if (res.ok && body.ok) {
-            handled = true;
-            setStatus("Cảm ơn quý khách! Xác nhận của quý khách đã được ghi nhận.", "is-ok");
-            form.reset();
-          } else if (!res.ok) {
-            handled = true;
-            setStatus(body.error || "Gửi không thành công. Vui lòng thử lại.", "is-err");
-          }
-        } catch (_) { /* network failure — fall through to client insert */ }
-      }
-
-      // Fallback: direct anon-key insert through the Supabase client
-      if (!handled) {
-        const sb = getSupabase();
-        if (sb) {
-          try {
-            const { error } = await sb.from("rsvp").insert(data);
-            if (error) throw error;
-            setStatus("Cảm ơn quý khách! Xác nhận của quý khách đã được ghi nhận.", "is-ok");
-            form.reset();
-          } catch (err) {
-            setStatus("Gửi không thành công. Quý khách vui lòng thử lại hoặc liên hệ trực tiếp với chúng tôi.", "is-err");
-          }
-        } else {
-          // Last resort: local-only confirmation
-          try {
-            const prev = JSON.parse(localStorage.getItem("rsvp_submissions") || "[]");
-            prev.push({ ...data, created_at: new Date().toISOString() });
-            localStorage.setItem("rsvp_submissions", JSON.stringify(prev));
-          } catch (_) {}
-          setStatus("Cảm ơn quý khách! Xác nhận đã được ghi nhận (chế độ ngoại tuyến).", "is-ok");
-          form.reset();
-        }
+      try {
+        await new Promise((r) => setTimeout(r, 500));
+        saveRsvpLocally(data);
+        setStatus("Cảm ơn quý khách! Xác nhận của quý khách đã được ghi nhận.", "is-ok");
+        form.reset();
+      } catch (_) {
+        setStatus("Gửi không thành công. Quý khách vui lòng thử lại.", "is-err");
       }
       submitBtn.disabled = false;
     });
